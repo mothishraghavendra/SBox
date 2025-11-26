@@ -8,8 +8,6 @@
 
 SBOX is a Chrome Extension that uses supervised neural networks to automatically categorize emails in Gmail. It intelligently labels emails using 10 real-world categories trained on actual email data to help you manage your inbox more efficiently.
 
-![SBOX Demo](docs/demo-screenshot.png)
-
 ## 🎯 Features
 
 ### 🤖 **Machine Learning Classification**
@@ -280,24 +278,24 @@ We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guid
 ### Common Issues
 
 #### Extension Not Working
-- ✅ Check that the extension is enabled in `chrome://extensions/`
-- ✅ Verify TensorFlow.js library is downloaded to `lib/tensorflow.min.js`
-- ✅ Refresh Gmail and ensure you're on `mail.google.com`
+-  Check that the extension is enabled in `chrome://extensions/`
+-  Verify TensorFlow.js library is downloaded to `lib/tensorflow.min.js`
+-  Refresh Gmail and ensure you're on `mail.google.com`
 
 #### Labels Not Appearing  
-- ✅ Click the SBOX icon and ensure the extension toggle is ON
-- ✅ Check if Gmail layout changed (we update for new Gmail versions)
-- ✅ Try refreshing the page after enabling the extension
+-  Click the SBOX icon and ensure the extension toggle is ON
+-  Check if Gmail layout changed (we update for new Gmail versions)
+-  Try refreshing the page after enabling the extension
 
 #### Poor Classification Accuracy
-- ✅ Train the model by correcting misclassified labels  
-- ✅ Ensure you have enough training examples (10+ per category)
-- ✅ Consider resetting and retraining if accuracy degrades
+-  Train the model by correcting misclassified labels  
+-  Ensure you have enough training examples (10+ per category)
+-  Consider resetting and retraining if accuracy degrades
 
 #### Performance Issues
-- ✅ Close other Chrome tabs to free up memory
-- ✅ Check if other extensions conflict with SBOX
-- ✅ Restart Chrome browser
+-  Close other Chrome tabs to free up memory
+-  Check if other extensions conflict with SBOX
+-  Restart Chrome browser
 
 ### Debug Mode
 
@@ -307,14 +305,6 @@ Enable debug logging in the console:
 // In browser console on Gmail page
 window.sboxDebug = true;
 ```
-
-### Support
-
-- 🐛 **Bug Reports**: [GitHub Issues](https://github.com/YOUR_USERNAME/sbox/issues)
-- 💬 **Discussions**: [GitHub Discussions](https://github.com/YOUR_USERNAME/sbox/discussions)
-- 📖 **Documentation**: [Installation Guide](INSTALLATION.md) | [Testing Guide](TESTING_GUIDE.md)
-- 🤝 **Contributing**: [Contribution Guidelines](CONTRIBUTING.md)
-
 ## 🔒 Privacy & Security
 
 ### Privacy Policy
@@ -331,15 +321,6 @@ window.sboxDebug = true;
 - **Minimal Permissions**: Only requests necessary Gmail access
 - **No External Resources**: All code runs locally
 
-### Data Storage
-
-| Data Type | Location | Purpose | Can Be Cleared |
-|-----------|----------|---------|----------------|
-| Settings | Chrome Sync Storage | User preferences | ✅ Yes |
-| Training Data | Chrome Local Storage | Model improvement | ✅ Yes |  
-| Statistics | Chrome Local Storage | Usage analytics | ✅ Yes |
-| Model Weights | Browser Memory | Classification | ✅ Yes |
-
 ## 📊 Performance
 
 ### Benchmarks
@@ -351,52 +332,10 @@ window.sboxDebug = true;
 
 ### Browser Support
 
-- ✅ **Chrome**: 88+ (recommended)
-- ✅ **Edge**: 88+ (Chromium-based)
-- ❌ **Firefox**: Not supported (uses Manifest V2)
-- ❌ **Safari**: Not supported
-
-## 🛣️ Roadmap
-
-### Version 1.1 (Coming Soon)
-- [ ] Custom category creation
-- [ ] Bulk email operations
-- [ ] Training data import/export
-- [ ] Improved mobile support
-
-### Version 1.2 (Future)
-- [ ] Multi-language support
-- [ ] Advanced ML models (BERT, GPT)
-- [ ] Integration with other email providers
-- [ ] Team sharing of trained models
-
-### Version 2.0 (Long-term)
-- [ ] Smart reply suggestions
-- [ ] Email prioritization
-- [ ] Calendar integration
-- [ ] Advanced analytics dashboard
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- **TensorFlow.js Team** - For the amazing ML framework
-- **Gmail Team** - For providing a great email platform
-- **Chrome Extensions Team** - For the powerful extension APIs
-- **Open Source Community** - For inspiration and feedback
-
-## 📈 Stats
-
-![GitHub stars](https://img.shields.io/github/stars/YOUR_USERNAME/sbox?style=social)
-![GitHub forks](https://img.shields.io/github/forks/YOUR_USERNAME/sbox?style=social)
-![GitHub issues](https://img.shields.io/github/issues/YOUR_USERNAME/sbox)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/YOUR_USERNAME/sbox)
-
-## 🌟 Acknowledgments
-
-This project uses the [imnim/multiclass-email-classification](https://huggingface.co/datasets/imnim/multiclass-email-classification) dataset from Hugging Face for training the machine learning model.
+- **Chrome**: 88+ (recommended)
+- **Edge**: 88+ (Chromium-based)
+- **Firefox**: Not supported (uses Manifest V2)
+- **Safari**: Not supported
 
 ---
 
