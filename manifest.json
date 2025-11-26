@@ -1,0 +1,65 @@
+{
+  "manifest_version": 3,
+  "name": "SBOX - Smart Email Categorizer",
+  "version": "1.0.0",
+  "description": "AI-powered email categorization using supervised neural networks to automatically label emails in Gmail and webmail interfaces.",
+  
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "https://gmail.com/*"
+  ],
+  
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "SBOX - Smart Email Categorizer",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  
+  "background": {
+    "service_worker": "background/background.js"
+  },
+  
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*", "https://gmail.com/*"],
+      "js": [
+        "lib/tensorflow.min.js",
+        "ml/emailClassifier.js",
+        "content/emailLabeler.js", 
+        "content/gmail.js"
+      ],
+      "css": ["content/styles.css"],
+      "run_at": "document_end"
+    }
+  ],
+  
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "ml/models/*",
+        "data/*",
+        "assets/*",
+        "icons/*"
+      ],
+      "matches": ["https://mail.google.com/*", "https://gmail.com/*"]
+    }
+  ],
+  
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

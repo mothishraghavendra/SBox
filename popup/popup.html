@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SBOX - Smart Email Categorizer</title>
+    <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+    <div class="popup-container">
+        <!-- Header -->
+        <header class="popup-header">
+            <div class="logo">
+                <img src="../icons/icon32.png" alt="SBOX Logo" class="logo-icon">
+                <h1>SBOX</h1>
+            </div>
+            <div class="toggle-container">
+                <label class="toggle">
+                    <input type="checkbox" id="extension-toggle">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tab-navigation">
+            <button class="tab-btn active" data-tab="dashboard">Dashboard</button>
+            <button class="tab-btn" data-tab="categories">Categories</button>
+            <button class="tab-btn" data-tab="training">Training</button>
+            <button class="tab-btn" data-tab="settings">Settings</button>
+        </nav>
+
+        <!-- Dashboard Tab -->
+        <div class="tab-content active" id="dashboard">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-number" id="total-emails">0</div>
+                    <div class="stat-label">Emails Processed</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="accuracy-rate">0%</div>
+                    <div class="stat-label">Accuracy Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="categories-active">15</div>
+                    <div class="stat-label">Active Categories</div>
+                </div>
+            </div>
+
+            <div class="chart-container">
+                <h3>Category Breakdown</h3>
+                <div class="category-chart" id="category-chart">
+                    <!-- Chart will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h3>Recent Classifications</h3>
+                <div class="activity-list" id="recent-activity-list">
+                    <!-- Recent activity will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories Tab -->
+        <div class="tab-content" id="categories">
+            <div class="categories-header">
+                <h3>Email Categories</h3>
+                <button class="btn-secondary" id="reset-categories">Reset to Default</button>
+            </div>
+            
+            <div class="categories-list" id="categories-list">
+                <!-- Categories will be populated by JavaScript -->
+            </div>
+            
+            <button class="btn-primary" id="add-custom-category">Add Custom Category</button>
+        </div>
+
+        <!-- Training Tab -->
+        <div class="tab-content" id="training">
+            <div class="training-header">
+                <h3>Model Training</h3>
+                <div class="training-status" id="training-status">
+                    <span class="status-indicator ready"></span>
+                    <span>Model Ready</span>
+                </div>
+            </div>
+
+            <div class="training-stats">
+                <div class="training-stat">
+                    <span class="label">Training Examples:</span>
+                    <span class="value" id="training-examples">0</span>
+                </div>
+                <div class="training-stat">
+                    <span class="label">Last Training:</span>
+                    <span class="value" id="last-training">Never</span>
+                </div>
+                <div class="training-stat">
+                    <span class="label">Model Version:</span>
+                    <span class="value" id="model-version">1.0.0</span>
+                </div>
+            </div>
+
+            <div class="training-actions">
+                <button class="btn-primary" id="retrain-model">Retrain Model</button>
+                <button class="btn-secondary" id="export-training">Export Data</button>
+                <button class="btn-secondary" id="import-training">Import Data</button>
+                <button class="btn-danger" id="reset-model">Reset Model</button>
+            </div>
+
+            <div class="training-tips">
+                <h4>Training Tips</h4>
+                <ul>
+                    <li>Correct misclassified emails by clicking on labels</li>
+                    <li>The model learns from your corrections automatically</li>
+                    <li>More training data improves accuracy</li>
+                    <li>Reset the model if accuracy degrades</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div class="tab-content" id="settings">
+            <div class="settings-section">
+                <h3>Display Settings</h3>
+                
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="show-confidence"> 
+                        Show confidence indicators
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <label for="label-position">Label Position:</label>
+                    <select id="label-position">
+                        <option value="right">Right of subject</option>
+                        <option value="left">Left of subject</option>
+                        <option value="below">Below subject</option>
+                    </select>
+                </div>
+
+                <div class="setting-item">
+                    <label for="confidence-threshold">Confidence Threshold:</label>
+                    <input type="range" id="confidence-threshold" min="0.1" max="1.0" step="0.1" value="0.7">
+                    <span class="range-value">70%</span>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>Behavior Settings</h3>
+                
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="auto-learn"> 
+                        Auto-learn from corrections
+                    </label>
+                </div>
+                
+                <div class="setting-item">
+                    <label>
+                        <input type="checkbox" id="show-notifications"> 
+                        Show classification notifications
+                    </label>
+                </div>
+            </div>
+
+            <div class="settings-section">
+                <h3>Data & Privacy</h3>
+                
+                <div class="setting-item">
+                    <p class="privacy-note">
+                        🔒 All email analysis happens locally on your device. 
+                        No email content is ever sent to external servers.
+                    </p>
+                </div>
+                
+                <button class="btn-secondary" id="export-settings">Export Settings</button>
+                <button class="btn-secondary" id="import-settings">Import Settings</button>
+                <button class="btn-danger" id="clear-all-data">Clear All Data</button>
+            </div>
+
+            <div class="settings-section">
+                <h3>About</h3>
+                <div class="about-info">
+                    <p><strong>Version:</strong> 1.0.0</p>
+                    <p><strong>Model:</strong> Neural Network (TensorFlow.js)</p>
+                    <p><strong>Categories:</strong> 15 default + custom</p>
+                </div>
+                
+                <div class="links">
+                    <a href="#" id="help-link">Help & Documentation</a>
+                    <a href="#" id="feedback-link">Send Feedback</a>
+                    <a href="#" id="github-link">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Processing...</div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="popup.js"></script>
+</body>
+</html>
